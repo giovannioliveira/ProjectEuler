@@ -3,25 +3,27 @@
 
 #define N 2
 
+typedef unsigned long long int bign;
+typedef long double bign_d;
+
 typedef struct{
-	int a;
-	int b;
+	bign a;
+	bign b;
 } factors;
 
-typedef unsigned long long int bign;
-
-factors getFactors(int n);
-int bigger(int n, int m);
-int odd(int n);
-int even(int n);
-int integer(double n);
-int powmod(int a, int b, int mod);
+factors getFactors(bign n);
+bign bigger(bign n, bign m);
+bign odd(bign n);
+bign even(bign n);
+bign integer(bign_d n);
+bign powmod(bign a, bign b, bign mod);
+bign prime(bign n);
 
 void main(){
-	printf("%d\n",prime(2729));
+	printf("%llu\n",prime(104729));
 }
 
-int bigger(int n, int m){
+bign bigger(bign n, bign m){
 	if(n>m){
 		return n;	
 	}else{
@@ -29,7 +31,7 @@ int bigger(int n, int m){
 	}
 }
 
-factors getFactors(int n){
+factors getFactors(bign n){
 	factors f;
 	if(even(n)){
 		f.a = n/2;
@@ -37,18 +39,16 @@ factors getFactors(int n){
 		return f;
 	}
 	if(integer(sqrt(n))){
-		f.a = (int)sqrt(n);
+		f.a = (bign)sqrt(n);
 		f.b = f.a;
 		return f;
 	}
-	double x =(int)sqrt(n), y;
+	bign_d x =(bign)sqrt(n), y;
 	for(;x<n;x++){
-		printf("x:%d\n",(int)x);
 		y = sqrt(pow(x,2)-n);
-		printf("%f\n",y);
 		if(integer(y)){
-			f.a = (int)(x-y);
-			f.b = (int)(x+y);
+			f.a = (bign)(x-y);
+			f.b = (bign)(x+y);
 			return f;
 		}
 	}
@@ -57,8 +57,8 @@ factors getFactors(int n){
 	return f;
 }
 
-int prime(int n){
-	int i, j, k=0, q=n-1, x;
+bign prime(bign n){
+	bign i, j, k=0, q=n-1, x;
 	if(n<=1){
 		return 0;
 	}else if(n==2){
@@ -70,7 +70,7 @@ int prime(int n){
 		q/=2;
 		k++;
 	}
-	for(i=2;i<(n-1);i++){
+	for(i=2;i<5;i++){
 		x=powmod(i,q,n);
 		if(x==1||x==(n-1)){
 			continue;
@@ -92,8 +92,8 @@ int prime(int n){
 	return 1;
 }
 
-int powmod(int a, int b, int mod){
-	int i, result;
+bign powmod(bign a, bign b, bign mod){
+	bign i, result;
 	if(!b){
 		return 1;
 	}
@@ -104,14 +104,14 @@ int powmod(int a, int b, int mod){
 	return result;
 }
 
-int integer(double n){
+bign integer(bign_d n){
 	return !fmod(n,1);
 }
 
-int odd(int n){
+bign odd(bign n){
 	return n&1;
 }
 
-int even(int n){
+bign even(bign n){
 	return !odd(n);
 }
