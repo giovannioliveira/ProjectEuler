@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define N 2
+#define N 600851475143
 
 typedef unsigned long long int bign;
 typedef long double bign_d;
@@ -20,7 +20,14 @@ bign powmod(bign a, bign b, bign mod);
 bign prime(bign n);
 
 void main(){
-	printf("%llu\n",prime(104729));
+	factors f = getFactors(N);
+	while(!prime(f.a)){
+		f.a = getFactors(f.a).b;
+	}
+	while(!prime(f.b)){
+		f.b = getFactors(f.b).b;
+	}
+	printf("%llu\n",bigger(f.a,f.b));
 }
 
 bign bigger(bign n, bign m){
