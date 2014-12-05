@@ -1,42 +1,4 @@
-#include <stdio.h>
-#include <math.h>
-
-#define N 600851475143
-
-typedef unsigned long long int bign;
-typedef long double bign_d;
-
-typedef struct{
-	bign a;
-	bign b;
-} factors;
-
-factors getFactors(bign n);
-bign bigger(bign n, bign m);
-bign odd(bign n);
-bign even(bign n);
-bign integer(bign_d n);
-bign powmod(bign a, bign b, bign mod);
-bign prime(bign n);
-
-void main(){
-	factors f = getFactors(N);
-	while(!prime(f.a)){
-		f.a = getFactors(f.a).b;
-	}
-	while(!prime(f.b)){
-		f.b = getFactors(f.b).b;
-	}
-	printf("%llu\n",bigger(f.a,f.b));
-}
-
-bign bigger(bign n, bign m){
-	if(n>m){
-		return n;	
-	}else{
-		return m;
-	}
-}
+#include "calc.h"
 
 factors getFactors(bign n){
 	factors f;
@@ -111,14 +73,34 @@ bign powmod(bign a, bign b, bign mod){
 	return result;
 }
 
-bign integer(bign_d n){
+int integer(bign_d n){
 	return !fmod(n,1);
 }
 
-bign odd(bign n){
+int odd(bign n){
 	return n&1;
 }
 
-bign even(bign n){
+int even(bign n){
 	return !odd(n);
+}
+
+void intToStr(int n, char *str){
+	sprintf(str,"%d",n);
+}
+
+int isPalindromous(char str[]){
+	int len = strlen(str);
+	if(len==0||len==1){
+		return 1;
+	}
+	if(str[0]==str[len-1]){
+		if(len==2){
+			return 1;
+		}
+		char str2[len-2];
+		return isPalindromous(strncpy(str2,&str[1],len-2));
+	}else{
+		return 0;
+	}
 }
