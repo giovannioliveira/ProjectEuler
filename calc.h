@@ -25,3 +25,4 @@ int even(bign n);
 //functions used in 4th problem
 int isPalindromous(char str[]);
 void intToStr(int n, char *str);
+int getPalindromous(char str[]);

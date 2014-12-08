@@ -104,3 +104,18 @@ int isPalindromous(char str[]){
 		return 0;
 	}
 }
+
+int getPalindromous(char str[]){
+	int i, size = 2*strlen(str);
+	char str2[size+1];
+	str2[size] = '\0';
+	for(i=0; i<size/2; i++){
+		str2[i] = str[i];
+	}
+	for(i=0; i<size/2; i++){
+		str2[size/2 + i] = str[size/2 - i - 1];
+	}
+	int result;
+	sscanf(str2,"%d",&result);
+	return result;
+}
