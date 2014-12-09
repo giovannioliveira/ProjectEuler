@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <stdlib.h>
+
+#define TRUE 1
+#define FALSE 0
 
 typedef unsigned long long int bign;
 typedef long double bign_d;
@@ -10,8 +14,13 @@ typedef struct{
 	bign b;
 } factors;
 
+typedef struct{
+	int *n;
+	int size;
+} subgroup;
 
-//functions used in 3rd problem
+
+//functions used in 3rd and 4th problems
 //uses fermat
 factors getFactors(bign n);
 //uses miller-rabin with precision with 4p
@@ -25,4 +34,11 @@ int even(bign n);
 //functions used in 4th problem
 int isPalindromous(char str[]);
 void intToStr(int n, char *str);
+//returns bigger palidromous integer based in the first n numbers ex.: 123 -> 123321
 int getPalindromous(char str[]);
+
+//functions used in 5th problem
+subgroup relativelyPrimes(int a, int b);
+bign subgroupFactorial(subgroup s);
+int subgroupDivides(subgroup s, int n);
+bign factorial(int n);

@@ -119,3 +119,51 @@ int getPalindromous(char str[]){
 	sscanf(str2,"%d",&result);
 	return result;
 }
+
+subgroup relativelyPrimes(int a, int b){
+	int i,j,add;
+	subgroup result;
+	result.n = NULL;
+	result.size = 0;
+	for(i=b;i>=a;i--){
+		add = TRUE;
+		for(j=0;j<result.size;j++){
+			if(!(result.n[j]%i)){
+				add = FALSE;
+				break;
+			}
+		}
+		if(add){
+			result.size++;
+			result.n = realloc(result.n,sizeof(int)*result.size);
+			result.n[result.size-1] = i;
+		}
+	}
+	return result;
+}
+
+bign subgroupFactorial(subgroup s){
+	bign result = 1;
+	int i;
+	for (i=0;i<s.size;i++){
+		result *= s.n[i];
+	}
+	return result;
+}
+
+int subgroupDivides(subgroup s, int n){
+	int i;
+	for(i=0;i<s.size;i++){
+		if(n%s.n[i]){
+			return FALSE;
+		}
+	}
+	return TRUE;
+}
+
+bign factorial(int n){
+	if(n==2){
+		return 2;
+	}
+	return n*factorial(n-1);
+}
