@@ -9,7 +9,7 @@ void main(){
 		char str[4];
 		intToStr(i,str);
 		int n = getPalindromous(str);
-		if(!prime(n)){
+		if(!isPrime(n)){
 			factors f = getFactors((bign)n);
 			if(f.a<=MAX_N && f.b>=MIN_N &&
 					f.b<=MAX_N && f.b>=MIN_N){

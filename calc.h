@@ -2,9 +2,12 @@
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define TRUE 1
 #define FALSE 0
+
+#define RABIN_PRECISION 10
 
 typedef unsigned long long int bign;
 typedef long double bign_d;
@@ -20,11 +23,11 @@ typedef struct{
 } subgroup;
 
 
-//functions used in 3rd and 4th problems
+//functions used in 3rd, 4th and 7th problems
 //uses fermat
 factors getFactors(bign n);
 //uses miller-rabin with precision with 4p
-bign prime(bign n);
+int isPrime(bign n);
 //reduces exp product to mod
 bign powmod(bign a, bign b, bign mod);
 int integer(bign_d n);
@@ -42,3 +45,5 @@ subgroup relativelyPrimes(int a, int b);
 bign subgroupFactorial(subgroup s);
 int subgroupDivides(subgroup s, int n);
 bign factorial(int n);
+
+

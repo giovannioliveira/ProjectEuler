@@ -26,7 +26,7 @@ factors getFactors(bign n){
 	return f;
 }
 
-bign prime(bign n){
+int isPrime(bign n){
 	bign i, j, k=0, q=n-1, x;
 	if(n<=1){
 		return 0;
@@ -39,8 +39,12 @@ bign prime(bign n){
 		q/=2;
 		k++;
 	}
-	for(i=2;i<5;i++){
-		x=powmod(i,q,n);
+	srand(time(NULL));
+	bign randBign;
+	for(i=0;i<RABIN_PRECISION;i++){
+		//produces rand numbers between 2 and n-2
+		randBign = (rand()%(n-4)) + 2;
+		x=powmod(randBign,q,n);
 		if(x==1||x==(n-1)){
 			continue;
 		}else{
