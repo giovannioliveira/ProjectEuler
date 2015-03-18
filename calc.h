@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#include <gmp.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -45,5 +46,8 @@ subgroup relativelyPrimes(int a, int b);
 bign subgroupFactorial(subgroup s);
 int subgroupDivides(subgroup s, int n);
 bign factorial(int n);
+
+//functions used in 8th problem
+int chartoi(char c);
 
 

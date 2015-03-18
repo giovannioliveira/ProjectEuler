@@ -171,3 +171,7 @@ bign factorial(int n){
 	}
 	return n*factorial(n-1);
 }
+
+int chartoi(char c){
+	return (c-'0');
+}
