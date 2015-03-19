@@ -39,7 +39,7 @@ int even(bign n);
 int isPalindromous(char str[]);
 void intToStr(int n, char *str);
 //returns bigger palidromous integer based in the first n numbers ex.: 123 -> 123321
-int getPalindromous(char str[]);
+bign getPalindromous(char str[]);
 
 //functions used in 5th problem
 subgroup relativelyPrimes(int a, int b);

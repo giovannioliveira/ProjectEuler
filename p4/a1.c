@@ -1,3 +1,6 @@
+//Pedro Aragão
+//Giovanni Oliveira
+
 #include "../calc.h"
 
 #define MAX_N 997 //999^2 = 998001
@@ -6,14 +9,14 @@
 void main(){
 	int i;
 	for (i=MAX_N; i>0; i--){
-		char str[4];
+		char str[100];
 		intToStr(i,str);
-		int n = getPalindromous(str);
-		if(!isPrime(n)){
+		bign n = getPalindromous(str);
+		if(1){//modificações a fazer aqui
 			factors f = getFactors((bign)n);
 			if(f.a<=MAX_N && f.b>=MIN_N &&
 					f.b<=MAX_N && f.b>=MIN_N){
-				printf("bigger palindromous: %d\n",n);
+				printf("bigger palindromous: %llu\n",n);
 				return;
 			}
 		}

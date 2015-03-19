@@ -109,7 +109,7 @@ int isPalindromous(char str[]){
 	}
 }
 
-int getPalindromous(char str[]){
+bign getPalindromous(char str[]){
 	int i, size = 2*strlen(str);
 	char str2[size+1];
 	str2[size] = '\0';
